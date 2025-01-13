@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+    stages {
+        stage('Change apache2') {
+            steps {
+                script {
+                    sh 'ssh ubuntu@192.168.1.146 "sudo docker rm apache2 --force"'
+                    sh 'ssh ubuntu@192.168.1.146 "sudo docker run -d -p 81:80 --name apache2 ubuntu/apache2"'
+                    sh 'ssh ubuntu@192.168.1.146 "sudo docker exec apache2 chmod 644 /var/www/html/index.html"'
+                    sh 'ssh ubuntu@192.168.1.146 "sudo docker exec apache2 sed -i \\"s/Apache2 Default Page/Vsevolod Zyabkin/g\\" /var/www/html/index.html"'
+                }
+            }
+        }
+        stage('Change nginx') {
+            steps {
+                script {
+                    sh 'ssh ubuntu@192.168.1.146 "sudo docker rm nginx --force"'
+                    sh 'ssh ubuntu@192.168.1.146 "sudo docker run -d -p 82:80 --name nginx nginx"'
+                    sh 'ssh ubuntu@192.168.1.146 "sudo docker exec nginx chmod 644 /usr/share/nginx/html/index.html"'
+                    sh 'ssh ubuntu@192.168.1.146 "sudo docker exec nginx sed -i \\"s/Welcome to nginx!/Vsevolod Zyabkin/g\\" /usr/share/nginx/html/index.html"'
+                }
+            }
+        }
+        stage('Change tomcat') {
+            steps {
+                script {
+                    sh 'ssh ubuntu@192.168.1.146 "sudo docker rm tomcat --force"'
+                    sh 'ssh ubuntu@192.168.1.146 "sudo docker run -d -p 83:8080 --name tomcat tomcat"'
+                    sh 'ssh ubuntu@192.168.1.146 "sudo docker exec tomcat mv webapps webapps2"'
+                    sh 'ssh ubuntu@192.168.1.146 "sudo docker exec tomcat mv webapps.dist/ webapps"'
+                    sh 'ssh ubuntu@192.168.1.146 "sudo docker exec tomcat chmod 644 /usr/local/tomcat/webapps/ROOT/index.jsp"'
+                    sh 'ssh ubuntu@192.168.1.146 "sudo docker exec tomcat sed -i \\"s/Congratulations!/Vsevolod Zyabkin/g\\" /usr/local/tomcat/webapps/ROOT/index.jsp"'
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+sudo docker ps : Покаже всі запущені докери
+sudo docker ps -a : Покаже всі докери
+sudo docker images : Покаже всі імеджі
+sudo docker pull : скачає
+sudo docker run -d -p 80:80 ubuntu/apache2 : запустить на фоні / якщо не найде локально може скачати
+sudo docker run -it : запустить але втратимо консоль
+sudo docker start 3f24c363737c : запустить зупинений докер
+sudo docker search zabbix : знайти докер
+sudo docker exec -it fbbc51f9e97a /bin/bash : доступ до файлів
+sudo docker stop 3f24c363737c : зупинити докер
+sudo docker rm f77539e7e45f : видалити контейнер
+sudo docker rm f77539e7e45f --force : видалити працюючий контейнер
+sudo docker rmi f77539e7e45f : видалити імедж
+sudo docker run -d ubuntu tail -f /dev/null : запуск для ubuntu
+
+sudo docker login vsevolod0823@gmail.com : докер логін
+sudo docker tag 18_e_learn vsevolod0823/18_e_learn:latest : докер тег
+sudo docker push vsevolod0823/18_e_learn:latest : запушити на докер хаб
+sudo docker commit f4284126bd35 vsevolod0823/cmp311:ubuntu : закомітити
+
+sudo docker run -d -p 80:80 vsevolod0823/cmp311:ubuntu : запустити з мого репозиторія
+sudo docker run -d -p 7000:80 -v /home/ubuntu/sharetest:/var/www/html vsevolod0823/ubuntu:share : примонтувати папку
+
+sudo docker build -t apache-zabbix-monitor . : зібрати докер
+
+sudo aa-remove-unknown : Fix error "permision denied"
