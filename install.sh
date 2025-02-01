@@ -1,3 +1,3 @@
-sudo apt update
-sudo apt install docker.io
-sudo snap install docker
+sudo apt -y update
+sudo apt install -y docker.io
+sudo snap install -y docker
