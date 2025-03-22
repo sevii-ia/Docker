@@ -1,42 +1,38 @@
-# Docker
+# Docker Setup
 
-Цей репозиторій містить конфігураційні файли та налаштування для роботи з Docker.
+Цей репозиторій містить скрипт для налаштування Docker на вашій системі. Ви можете використовувати ці інструкції для встановлення Docker на вашу машину.
 
-## Вимоги
+## Встановлення
 
-- Docker >= 20.x
-- Docker Compose >= 2.x (за потреби)
+Щоб встановити Docker, виконайте наступні кроки:
 
-## Структура репозиторію
+1. Оновіть ваші пакети:
+    ```bash
+    sudo apt -y update
+    ```
 
-```
-Docker/
-│── services/        # Налаштування окремих сервісів
-│── configs/         # Конфігураційні файли
-│── docker-compose.yml # Композиція контейнерів
-│── Dockerfile       # Базовий образ
-│── scripts/         # Скрипти для автоматизації
-```
+2. Встановіть Docker:
+    ```bash
+    sudo apt install -y docker.io
+    ```
 
-## Використання
+3. Якщо ви бажаєте використовувати версію Docker через Snap, виконайте команду:
+    ```bash
+    sudo snap install docker
+    ```
 
-1. Клонувати репозиторій:
-   ```sh
-   git clone https://github.com/sevii-ia/Docker.git
-   cd Docker
-   ```
+4. Запустіть Docker:
+    ```bash
+    sudo systemctl start docker
+    ```
 
-2. Запустити сервіси через Docker Compose:
-   ```sh
-   docker-compose up -d
-   ```
+5. Увімкніть автоматичний запуск Docker при завантаженні системи:
+    ```bash
+    sudo systemctl enable docker
+    ```
 
-3. Переглянути запущені контейнери:
-   ```sh
-   docker ps
-   ```
+## Перевірка установки
 
-4. Остановити всі контейнери:
-   ```sh
-   docker-compose down
-   
+Щоб перевірити, чи Docker був успішно встановлений, виконайте команду:
+```bash
+docker --version
