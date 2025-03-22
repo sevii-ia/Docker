@@ -16,17 +16,12 @@
     sudo apt install -y docker.io
     ```
 
-3. Якщо ви бажаєте використовувати версію Docker через Snap, виконайте команду:
-    ```bash
-    sudo snap install docker
-    ```
-
-4. Запустіть Docker:
+3. Запустіть Docker:
     ```bash
     sudo systemctl start docker
     ```
 
-5. Увімкніть автоматичний запуск Docker при завантаженні системи:
+4. Увімкніть автоматичний запуск Docker при завантаженні системи:
     ```bash
     sudo systemctl enable docker
     ```
