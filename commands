@@ -24,3 +24,8 @@ sudo docker run -d -p 7000:80 -v /home/ubuntu/sharetest:/var/www/html vsevolod08
 sudo docker build -t apache-zabbix-monitor . : зібрати докер
 
 sudo aa-remove-unknown : Fix error "permision denied"
+
+sudo docker rm $(sudo docker ps -aq)
+sudo docker rmi -f $(sudo docker images -q)
+sudo docker stop $(sudo docker ps -aq)
+sudo docker rm $(sudo docker ps -aq)
